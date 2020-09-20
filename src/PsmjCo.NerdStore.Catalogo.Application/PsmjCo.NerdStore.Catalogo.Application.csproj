@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PsmjCo.NerdStore.Catalogo.Data\PsmjCo.NerdStore.Catalogo.Data.csproj" />
+    <ProjectReference Include="..\PsmjCo.NerdStore.Catalogo.Domain\PsmjCo.NerdStore.Catalogo.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="automapper" Version="10.0.0" />
+  </ItemGroup>
+
+</Project>

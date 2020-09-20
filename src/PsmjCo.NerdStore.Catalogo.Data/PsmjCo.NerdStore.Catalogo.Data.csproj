@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<LangVersion>9.0</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Migrations\20200906224443_initial.cs" />
+	  <Compile Remove="Migrations\20200906224443_initial.Designer.cs" />
+	  <Compile Remove="Migrations\20200906224727_initial2.cs" />
+	  <Compile Remove="Migrations\20200906224727_initial2.Designer.cs" />
+	  <Compile Remove="Migrations\20200906224847_initial.cs" />
+	  <Compile Remove="Migrations\20200906224847_initial.Designer.cs" />
+	  <Compile Remove="Migrations\20200906230455_initial.cs" />
+	  <Compile Remove="Migrations\20200906230455_initial.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-rc.1.20451.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-rc.1.20451.13">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-rc.1.20451.13" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\PsmjCo.NerdStore.Catalogo.Domain\PsmjCo.NerdStore.Catalogo.Domain.csproj" />
+		<ProjectReference Include="..\PsmjCo.NerdStore.Core\PsmjCo.NerdStore.Core.csproj" />
+	</ItemGroup>
+
+</Project>

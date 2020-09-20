@@ -1,0 +1,33 @@
+﻿@model PsmjCo.NerdStore.Catalogo.Application.ViewModels.CategoriaViewModel
+
+@{
+    ViewData["Title"] = "NovaCategoria";
+}
+
+<h1>Nova Categoria</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NovaCategoria">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Codigo" class="control-label"></label>
+                <input asp-for="Codigo" class="form-control" />
+                <span asp-validation-for="Codigo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                @Html.ActionLink("Voltar", "Index", "Vitrine", null, new {@class = "btn btn-info" })
+            </div>
+        </form>
+    </div>
+</div>
+

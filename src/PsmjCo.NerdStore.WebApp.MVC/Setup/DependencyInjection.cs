@@ -6,8 +6,10 @@
     using Catalogo.Domain;
     using Catalogo.Domain.Events;
     using Core.Communication.Mediator;
+    using Core.Data.EventSourcing;
     using Core.Messages.CommonMessages.IntegrationEvents;
     using Core.Messages.CommonMessages.Notifications;
+    using EventSourcing;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
     using Pagamentos.Business;
@@ -31,6 +33,10 @@
 
             // Notifications
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+            // Event Sourcing
+            services.AddSingleton<IEventStoreService, EventStoreService>();
+            services.AddSingleton<IEventSourcingRepository, EventSourcingRepository>();
 
             // Catalogo
             services.AddScoped<IProdutoRepository, ProdutoRepository>();

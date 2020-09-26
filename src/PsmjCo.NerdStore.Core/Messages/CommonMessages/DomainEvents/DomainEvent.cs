@@ -1,13 +1,16 @@
 ﻿namespace PsmjCo.NerdStore.Core.Messages.CommonMessages.DomainEvents
 {
     using System;
-    using Messages;
+    using MediatR;
 
-    public class DomainEvent : Event
+    public abstract class DomainEvent : Message, INotification
     {
-        public DomainEvent(Guid aggregateId)
+        protected DomainEvent(Guid aggregateId)
         {
             this.AggregateId = aggregateId;
+            this.Timestamp = DateTime.UtcNow;
         }
+
+        public DateTime Timestamp { get; }
     }
 }

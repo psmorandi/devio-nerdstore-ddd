@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EventStore.Client" Version="20.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PsmjCo.NerdStore.Core\PsmjCo.NerdStore.Core.csproj" />
+  </ItemGroup>
+
+</Project>

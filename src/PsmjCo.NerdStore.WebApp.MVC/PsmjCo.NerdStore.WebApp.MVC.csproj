@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EventSourcing\EventSourcing.csproj" />
     <ProjectReference Include="..\PsmjCo.NerdStore.Catalogo.Application\PsmjCo.NerdStore.Catalogo.Application.csproj" />
     <ProjectReference Include="..\PsmjCo.NerdStore.Catalogo.Data\PsmjCo.NerdStore.Catalogo.Data.csproj" />
     <ProjectReference Include="..\PsmjCo.NerdStore.Catalogo.Domain\PsmjCo.NerdStore.Catalogo.Domain.csproj" />

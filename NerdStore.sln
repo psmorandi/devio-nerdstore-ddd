@@ -39,11 +39,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PsmjCo.NerdStore.Vendas.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PsmjCo.NerdStore.Vendas.Data", "src\PsmjCo.NerdStore.Vendas.Data\PsmjCo.NerdStore.Vendas.Data.csproj", "{59FF597A-5DEE-4F22-A913-253D2AD6A70A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsmjCo.NerdStore.Pagamentos.AntiCorruption", "src\PsmjCo.NerdStore.Pagamentos.AntiCorruption\PsmjCo.NerdStore.Pagamentos.AntiCorruption.csproj", "{FB46FCB8-A8FB-43B6-9233-C34B860B14C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PsmjCo.NerdStore.Pagamentos.AntiCorruption", "src\PsmjCo.NerdStore.Pagamentos.AntiCorruption\PsmjCo.NerdStore.Pagamentos.AntiCorruption.csproj", "{FB46FCB8-A8FB-43B6-9233-C34B860B14C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsmjCo.NerdStore.Pagamentos.Data", "src\PsmjCo.NerdStore.Pagamentos.Data\PsmjCo.NerdStore.Pagamentos.Data.csproj", "{591311AB-F8F7-4FFF-A23D-229142EB8401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PsmjCo.NerdStore.Pagamentos.Data", "src\PsmjCo.NerdStore.Pagamentos.Data\PsmjCo.NerdStore.Pagamentos.Data.csproj", "{591311AB-F8F7-4FFF-A23D-229142EB8401}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PsmjCo.NerdStore.Pagamentos.Business", "src\PsmjCo.NerdStore.Pagamentos.Business\PsmjCo.NerdStore.Pagamentos.Business.csproj", "{94691E36-4B55-469D-BD61-34F836E24C2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{A1BAF1EE-9D84-4B63-972A-0FFBCAC576DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcing", "src\EventSourcing\EventSourcing.csproj", "{FEB0B892-0B11-4F84-84D8-04640335C930}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +103,10 @@ Global
 		{94691E36-4B55-469D-BD61-34F836E24C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94691E36-4B55-469D-BD61-34F836E24C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94691E36-4B55-469D-BD61-34F836E24C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEB0B892-0B11-4F84-84D8-04640335C930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB0B892-0B11-4F84-84D8-04640335C930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB0B892-0B11-4F84-84D8-04640335C930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB0B892-0B11-4F84-84D8-04640335C930}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +131,7 @@ Global
 		{FB46FCB8-A8FB-43B6-9233-C34B860B14C0} = {A076D372-EEA9-4EC9-BD0F-A4C721FD9307}
 		{591311AB-F8F7-4FFF-A23D-229142EB8401} = {A076D372-EEA9-4EC9-BD0F-A4C721FD9307}
 		{94691E36-4B55-469D-BD61-34F836E24C2E} = {A076D372-EEA9-4EC9-BD0F-A4C721FD9307}
+		{FEB0B892-0B11-4F84-84D8-04640335C930} = {A1BAF1EE-9D84-4B63-972A-0FFBCAC576DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1586A17F-9992-47FF-BC2D-4E5EF1D5810F}

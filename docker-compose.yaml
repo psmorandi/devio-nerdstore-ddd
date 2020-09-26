@@ -1,10 +1,15 @@
 version: '3'
 services:
   eventstore:
-    image: eventstore/eventstore:latest
+    image: eventstore/eventstore
     environment:
       - EVENTSTORE_INSECURE=true
       - EVENTSTORE_DEV=true
     ports:
       - 2113:2113
       - 1113:1113
+    volumes:
+      - eventstore
+
+volumes: 
+  eventstore:

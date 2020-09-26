@@ -72,7 +72,7 @@
             produto.DebitarEstoque(quantidade);
 
             // TODO: 10 pode ser parametrizavel em arquivo de configuração
-            if (produto.QuantidadeEstoque < 10) await this._mediatorHandler.PublicarEvento(new ProdutoAbaixoEstoqueEvent(produto.Id, produto.QuantidadeEstoque));
+            if (produto.QuantidadeEstoque < 10) await this._mediatorHandler.PublicarDomainEvent(new ProdutoAbaixoEstoqueEvent(produto.Id, produto.QuantidadeEstoque));
 
             this._produtoRepository.Atualizar(produto);
             return true;

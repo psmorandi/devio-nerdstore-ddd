@@ -57,42 +57,10 @@
                     this.pedidoRepository.AtualizarItem(pedido.PedidoItems.FirstOrDefault(p => p.ProdutoId == pedidoItem.ProdutoId));
                 else
                     this.pedidoRepository.AdicionarItem(pedidoItem);
-
-                pedido.AdicionarEvento(new PedidoAtualizadoEvent(pedido.ClienteId, pedido.Id, pedido.ValorTotal));
             }
 
             pedido.AdicionarEvento(
                 new PedidoItemAdicionadoEvent(pedido.ClienteId, pedido.Id, message.ProdutoId, message.Nome, message.ValorUnitario, message.Quantidade));
-            return await this.pedidoRepository.UnitOfWork.Commit();
-        }
-
-        public async Task<bool> Handle(RemoverItemPedidoCommand message, CancellationToken cancellationToken)
-        {
-            if (!this.ValidarComando(message)) return false;
-
-            var pedido = await this.pedidoRepository.ObterPedidoRascunhoPorClienteId(message.ClienteId);
-
-            if (pedido == null)
-            {
-                await this.mediatorHandler.PublicarNotificacao(new DomainNotification("pedido", "Pedido não encontrado!"));
-                return false;
-            }
-
-            var pedidoItem = await this.pedidoRepository.ObterItemPorPedido(pedido.Id, message.ProdutoId);
-
-            if (pedidoItem != null && !pedido.PedidoItemExistente(pedidoItem))
-            {
-                await this.mediatorHandler.PublicarNotificacao(new DomainNotification("pedido", "Item do pedido não encontrado!"));
-                return false;
-            }
-
-            pedido.RemoverItem(pedidoItem);
-            pedido.AdicionarEvento(new PedidoAtualizadoEvent(pedido.ClienteId, pedido.Id, pedido.ValorTotal));
-            pedido.AdicionarEvento(new PedidoProdutoRemovidoEvent(message.ClienteId, pedido.Id, message.ProdutoId));
-
-            this.pedidoRepository.RemoverItem(pedidoItem);
-            this.pedidoRepository.Atualizar(pedido);
-
             return await this.pedidoRepository.UnitOfWork.Commit();
         }
 
@@ -117,11 +85,38 @@
             }
 
             pedido.AtualizarUnidades(pedidoItem, message.Quantidade);
-
             pedido.AdicionarEvento(new PedidoProdutoAtualizadoEvent(message.ClienteId, pedido.Id, message.ProdutoId, message.Quantidade));
-            pedido.AdicionarEvento(new PedidoAtualizadoEvent(pedido.ClienteId, pedido.Id, pedido.ValorTotal));
 
             this.pedidoRepository.AtualizarItem(pedidoItem);
+            this.pedidoRepository.Atualizar(pedido);
+
+            return await this.pedidoRepository.UnitOfWork.Commit();
+        }
+
+        public async Task<bool> Handle(RemoverItemPedidoCommand message, CancellationToken cancellationToken)
+        {
+            if (!this.ValidarComando(message)) return false;
+
+            var pedido = await this.pedidoRepository.ObterPedidoRascunhoPorClienteId(message.ClienteId);
+
+            if (pedido == null)
+            {
+                await this.mediatorHandler.PublicarNotificacao(new DomainNotification("pedido", "Pedido não encontrado!"));
+                return false;
+            }
+
+            var pedidoItem = await this.pedidoRepository.ObterItemPorPedido(pedido.Id, message.ProdutoId);
+
+            if (pedidoItem != null && !pedido.PedidoItemExistente(pedidoItem))
+            {
+                await this.mediatorHandler.PublicarNotificacao(new DomainNotification("pedido", "Item do pedido não encontrado!"));
+                return false;
+            }
+
+            pedido.RemoverItem(pedidoItem);
+            pedido.AdicionarEvento(new PedidoProdutoRemovidoEvent(message.ClienteId, pedido.Id, message.ProdutoId));
+
+            this.pedidoRepository.RemoverItem(pedidoItem);
             this.pedidoRepository.Atualizar(pedido);
 
             return await this.pedidoRepository.UnitOfWork.Commit();
@@ -156,7 +151,6 @@
                 return false;
             }
 
-            pedido.AdicionarEvento(new PedidoAtualizadoEvent(pedido.ClienteId, pedido.Id, pedido.ValorTotal));
             pedido.AdicionarEvento(new VoucherAplicadoPedidoEvent(message.ClienteId, pedido.Id, voucher.Id));
 
             this.pedidoRepository.Atualizar(pedido);
